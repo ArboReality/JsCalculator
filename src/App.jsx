@@ -1,22 +1,41 @@
 import './App.css'
 import React, {useState, useEffect} from 'react'
+import { useReducer } from "react"
 
-export const App = (props) => {
-  // props = {
-  //   value: null, 
-  // }
-  const [value, setValue] = useState(props.value)
 
+const ACTIONS = {
+ADD_DIGIT: 'add-digit',
+CHOOSE_OPERATION: 'choose-operation',
+CLEAR: 'clear',
+DELETE_DIGIT: 'delete-digit',
+EVALUATE: 'evaluate' 
+} 
+
+
+function reducer(state, { type, payload }) {
+}
+
+
+function App() {
+
+const [{ currentOperand, previousOperand, operation }, dispatch] = useReducer(reducer, {})
 
   return (
     <main>
       <div id="log" style={{display: "true"}} >
         History
       </div>
-      <input type="numeric" id="display" placeholder="0" value={value} />
+      <div id="display" className="output">
+        <div className="previous-operand">
+          {previousOperand} {operation}
+        </div>
+        <div className="current-operand">
+          {currentOperand}
+        </div>
+      </div>
       <div id="numpad">
-        <button id="zero" onClick={() => {setValue(0)}} >0</button>
-        <button id="one" onClick={() => {setValue(1)}} >1</button>
+        <button id="zero" >0</button>
+        <button id="one" >1</button>
         <button id="two">2</button>
         <button id="three">3</button>
         <button id="four">4</button>

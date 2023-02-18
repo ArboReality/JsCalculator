@@ -1,4 +1,4 @@
-* {
+*, *::before, *::after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
@@ -21,13 +21,17 @@ main {
 
 #display {
   grid-area: dis;
-  margin: 0 17%;
-  aspect-ratio: 4/1;
+  aspect-ratio: 3/1;
   border: 2px solid black;
   border-radius: .5rem; 
   text-align: right;
   font-size: 1.5em;
   padding: 0 .25rem;
+}
+
+.previous-operand {
+  color: lightgrey;
+  font-size: 1em;
 }
 
 #log {
