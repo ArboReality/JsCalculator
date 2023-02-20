@@ -5,13 +5,13 @@
 /*   outline: 2px limegreen solid !important; */
 }
 
-main {
+.calculator-grid {
   display: grid;
   gap: .25rem;
   grid-template-areas: 
-    "dis dis log log log"
-    "pad pad log log log"
-    "pad pad log log log"
+    "dis log log"
+    "pad log log"
+    "pad log log"
   ;
   justify-content: center;
   align-items: normal;
@@ -34,6 +34,10 @@ main {
   font-size: 1em;
 }
 
+.span-rows-2 {
+  grid-row: span 2;
+}
+
 #log {
   min-width: 200px;
   text-align: right;
@@ -47,46 +51,20 @@ main {
   grid-area: pad;
   display: grid;
   gap: .25rem;
-  grid-template-areas:
-    "clr clr div mult"
-    "seven eight nine sub"
-    "four five six add"
-    "one two three eq"
-    "zero zero dec eq"
-    ;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(5, 1fr);
   justify-content: center;
   align-content: center;
-  
 }
 
-#zero {grid-area: zero;}
-#one {grid-area: one;}
-#two {grid-area: two;}
-#three {grid-area: three;}
-#four {grid-area: four;}
-#five {grid-area: five;}
-#six {grid-area: six;}
-#seven {grid-area: seven;}
-#eight {grid-area: eight;}
-#nine {grid-area: nine;}
-
 #equals {
-  grid-area: eq;
   background-color: #5198fb;
   color: #454954;
 }
 
 #clear {
-  grid-area: clr;
   background-color: #df2040;
 }
-
-#add {grid-area: add;}
-#subtract {grid-area: sub;}
-#multiply {grid-area: mult;}
-#divide {grid-area: div;}
-#decimal {grid-area: dec;}
-
 
 button {
   font-weight: bold;
@@ -107,4 +85,9 @@ button:hover {
 #equals:hover, #clear:hover {
   color: black;
   background-color: #a3c5f5;
+}
+
+/* Zero digit style */
+#numpad >:nth-child(17) {
+  grid-column: span 2;
 }
