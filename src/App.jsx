@@ -1,24 +1,14 @@
 import './App.css'
 import React, {useState, useEffect} from 'react'
-import { useReducer } from "react"
 
+function App(props) {
 
-const ACTIONS = {
-ADD_DIGIT: 'add-digit',
-CHOOSE_OPERATION: 'choose-operation',
-CLEAR: 'clear',
-DELETE_DIGIT: 'delete-digit',
-EVALUATE: 'evaluate' 
-} 
+  const [previousOperand, setPreviousOperand] = useState(null)
+  const [currentOperand, setCurrentOperand] = useState(0)
+  const [operation, setOperation] = useState(null)
 
+  useEffect(() => {setCurrentOperand})
 
-function reducer(state, { type, payload }) {
-}
-
-
-function App() {
-
-const [{ currentOperand, previousOperand, operation }, dispatch] = useReducer(reducer, {})
 
   return (
     <main>
