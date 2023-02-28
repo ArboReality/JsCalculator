@@ -8,14 +8,14 @@ export const ACTIONS = {
   CHOOSE_OPERATION: 'choose-operation',
   CLEAR: 'clear',
   DELETE_DIGIT: 'delete-digit',
-  EVALUATE: 'evaluate' 
+  EVALUATE: 'evaluate', 
 } 
 
 
 function reducer(state, { type, payload }) {
   switch (type) {
     case ACTIONS.ADD_DIGIT:
-      if (state.overwrite){
+      if (state.overwrite) {
         return {
           ...state, 
           currentOperand: payload.digit, 
@@ -98,10 +98,10 @@ function reducer(state, { type, payload }) {
   }
 }
 
-function evaluate ({currentOperand, previousOperand, operation}) {
+function evaluate({ currentOperand, previousOperand, operation }) {
   const prev = parseFloat(previousOperand)
   const current = parseFloat(currentOperand)
-  if (isNAN(prev) || isNAN(current)) return ""
+  if (isNaN(prev) || isNaN(current)) return ""
   let computation = ""
 
   switch (operation) {
@@ -143,9 +143,6 @@ function App() {
 
   return (
     <main className="calculator-grid">
-      <div id="log" style={{display: "true"}} >
-        History
-      </div>
       <div id="display" className="output">
         <div className="previous-operand">
           {formatOperand(previousOperand)} {operation}
@@ -156,7 +153,7 @@ function App() {
       </div>
       <div id="numpad">
         <button 
-          id="clear" 
+          id="clear" className="span-cols-2"
           onClick={() => dispatch({ type: ACTIONS.CLEAR })}
         >
           AC
@@ -164,26 +161,26 @@ function App() {
         <button id="delete" onClick={() => dispatch({ type: ACTIONS.DELETE_DIGIT })}>
         &#9003;
       </button>
-        <OperationBtn id="divide" operation="/">{dispatch}</OperationBtn>
-        <OperationBtn id="multiply" operation="*">{dispatch}</OperationBtn>
-        <DigitBtn id="seven" digit="7">{dispatch}</DigitBtn>
-        <DigitBtn id="eight" digit="8">{dispatch}</DigitBtn>
-        <DigitBtn id="nine" digit="9">{dispatch}</DigitBtn>
-        <OperationBtn id="add" operation="+">{dispatch}</OperationBtn>
-        <DigitBtn id="four" digit="4">{dispatch}</DigitBtn>
-        <DigitBtn id="five" digit="5">{dispatch}</DigitBtn>
-        <DigitBtn id="six" digit="6">{dispatch}</DigitBtn>
-        <OperationBtn id="subtract" operation="-">{dispatch}</OperationBtn>
-        <DigitBtn id="one" digit="1">{dispatch}</DigitBtn>
-        <DigitBtn id="two" digit="2">{dispatch}</DigitBtn>
-        <DigitBtn id="three" digit="3">{dispatch}</DigitBtn>
-        <button id="equals" className="span-rows-2"
+        <OperationBtn id="divide" operation="/" dispatch={dispatch} />
+        <DigitBtn id="seven" digit="7" dispatch={dispatch} />
+        <DigitBtn id="eight" digit="8" dispatch={dispatch} />
+        <DigitBtn id="nine" digit="9" dispatch={dispatch} />
+        <OperationBtn id="multiply" operation="*" dispatch={dispatch} />
+        <DigitBtn id="four" digit="4" dispatch={dispatch} />
+        <DigitBtn id="five" digit="5" dispatch={dispatch} />
+        <DigitBtn id="six" digit="6" dispatch={dispatch} />
+        <OperationBtn id="add" operation="+" dispatch={dispatch} />
+        <DigitBtn id="one" digit="1" dispatch={dispatch} />
+        <DigitBtn id="two" digit="2" dispatch={dispatch} />
+        <DigitBtn id="three" digit="3" dispatch={dispatch} />
+        <OperationBtn id="subtract" operation="-" dispatch={dispatch} />
+        <DigitBtn id="decimal" digit="." dispatch={dispatch} />
+        <DigitBtn id="zero" digit="0" dispatch={dispatch} />
+        <button id="equals" className="span-cols-2"
           onClick={() => dispatch({ type: ACTIONS.EVALUATE })}
         >
           =
         </button>
-        <DigitBtn id="zero" className="span-cols-2" digit="0">{dispatch}</DigitBtn>
-        <DigitBtn id="decimal" digit=".">{dispatch}</DigitBtn>
       </div>
     </main>
   )
