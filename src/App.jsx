@@ -135,7 +135,6 @@ function formatOperand(operand) {
 
 
 function App() {
-
   const [{ currentOperand, previousOperand, operation }, dispatch] = useReducer(
     reducer, 
     {}
@@ -186,6 +185,5 @@ function App() {
   )
 }
 
-
-
 export default App;
+
