@@ -9,14 +9,14 @@
   display: grid;
   gap: .25rem;
   grid-template-areas: 
-    "dis log log"
-    "pad log log"
-    "pad log log"
+    "dis dis"
+    "pad pad"
+    "pad pad"
   ;
   justify-content: center;
   align-items: normal;
   padding: 1rem;
-  margin: 25% auto;
+  margin: 15vh auto;
 }
 
 #display {
